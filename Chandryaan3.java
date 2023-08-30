@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Chandryaan3 {
     String dir = "N";
-    String prev;
+    String prev = dir;
     int[] coordinates = { 0, 0, 0 };
 
     private final Map<String, int[]> directionToCoordinateChange = new HashMap<>();
