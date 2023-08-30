@@ -7,7 +7,11 @@ public class Chandryaan3 {
 
     private final Map<String, int[]> directionToCoordinateChange = new HashMap<>();
     
-    public Chandryaan3() {
+    public Chandryaan3(String initialDir,int[] initialCor) {
+        
+        this.dir = initialDir;
+        this.coordinates = initialCor;
+
         directionToCoordinateChange.put("N", new int[] { 0, 1, 0 });
         directionToCoordinateChange.put("S", new int[] { 0, -1, 0 });
         directionToCoordinateChange.put("E", new int[] { 1, 0, 0 });
@@ -119,20 +123,22 @@ public class Chandryaan3 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Chandryaan3 chandryaan = new Chandryaan3();
 
         System.out.print("Enter the initial facing dir:- ");
-        chandryaan.dir = sc.nextLine();
-
+        String initialDir = sc.nextLine();
+        
+        int [] initialCor = new int[3];
         System.out.print("Enter the starting cordinates:- ");
         for (int i = 0; i < 3; i++) {
-            chandryaan.coordinates[i] = sc.nextInt();
+            initialCor[i] = sc.nextInt();
         }
 
         System.out.print("Enter commands (separated by spaces): ");
         sc.nextLine(); // Consume the newline character
         String commandsLine = sc.nextLine();
         char[] commands = commandsLine.toCharArray();
+
+        Chandryaan3 chandryaan = new Chandryaan3(initialDir,initialCor);
 
         chandryaan.handleMove(commands);
         System.out.println("Final dir:- " + chandryaan.dir);
