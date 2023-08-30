@@ -6,9 +6,9 @@ public class Chandryaan3 {
     int[] coordinates = { 0, 0, 0 };
 
     private final Map<String, int[]> directionToCoordinateChange = new HashMap<>();
-    
-    public Chandryaan3(String initialDir,int[] initialCor) {
-        
+
+    public Chandryaan3(String initialDir, int[] initialCor) {
+
         this.dir = initialDir;
         this.coordinates = initialCor;
 
@@ -40,45 +40,17 @@ public class Chandryaan3 {
 
     public void turnLeft() {
         if (dir.equals("Up") || dir.equals("Down")) {
-            dir = prev.equals("N") ? "W"
-                    : prev.equals("S") ? "E" : prev.equals("E") ? "N" : prev.equals("W") ? "S" : dir;
+            dir = prev.equals("N") ? "W" : prev.equals("S") ? "E" : prev.equals("E") ? "N" : "S";
         } else {
-            switch (dir) {
-                case "N":
-                    dir = "W";
-                    break;
-                case "S":
-                    dir = "E";
-                    break;
-                case "E":
-                    dir = "N";
-                    break;
-                case "W":
-                    dir = "S";
-                    break;
-            }
+            dir = dir.equals("N") ? "W" : dir.equals("S") ? "E" : dir.equals("E") ? "N" : "S";
         }
     }
 
     public void turnRight() {
         if (dir.equals("Up") || dir.equals("Down")) {
-            dir = prev.equals("N") ? "E"
-                    : prev.equals("S") ? "W" : prev.equals("E") ? "S" : prev.equals("W") ? "N" : dir;
+            dir = prev.equals("N") ? "E" : prev.equals("S") ? "W" : prev.equals("E") ? "S" : "N";
         } else {
-            switch (dir) {
-                case "N":
-                    dir = "E";
-                    break;
-                case "S":
-                    dir = "W";
-                    break;
-                case "E":
-                    dir = "S";
-                    break;
-                case "W":
-                    dir = "N";
-                    break;
-            }
+            dir = dir.equals("N") ? "E" : dir.equals("S") ? "W" : dir.equals("E") ? "S" : "N";
         }
     }
 
@@ -126,8 +98,8 @@ public class Chandryaan3 {
 
         System.out.print("Enter the initial facing dir:- ");
         String initialDir = sc.nextLine();
-        
-        int [] initialCor = new int[3];
+
+        int[] initialCor = new int[3];
         System.out.print("Enter the starting cordinates:- ");
         for (int i = 0; i < 3; i++) {
             initialCor[i] = sc.nextInt();
@@ -138,7 +110,7 @@ public class Chandryaan3 {
         String commandsLine = sc.nextLine();
         char[] commands = commandsLine.toCharArray();
 
-        Chandryaan3 chandryaan = new Chandryaan3(initialDir,initialCor);
+        Chandryaan3 chandryaan = new Chandryaan3(initialDir, initialCor);
 
         chandryaan.handleMove(commands);
         System.out.println("Final dir:- " + chandryaan.dir);
