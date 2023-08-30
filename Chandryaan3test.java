@@ -6,15 +6,17 @@ public class Chandryaan3test {
     public void testChandraan() {
         Chandryaan3 chandryaan = new Chandryaan3();
 
-        // Test initial position and direction
+        // Test:1 initial position and direction
         assertEquals("N", chandryaan.dir);
         assertArrayEquals(new int[] { 0, 0, 0 }, chandryaan.coordinates);
 
+
+        // Test:2 sample test case
         char[] commands = { 'f', 'r', 'u', 'b', 'l' };
 
         chandryaan.handleMove(commands);
 
-        // Assert the expected final state
+        // result of test 2: Assert the expected final state
         assertEquals("N", chandryaan.dir);
         assertArrayEquals(new int[] { 0, 1, -1 }, chandryaan.coordinates);
 
