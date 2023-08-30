@@ -10,7 +10,6 @@ public class Chandryaan3test {
         assertEquals("N", chandryaan.dir);
         assertArrayEquals(new int[] { 0, 0, 0 }, chandryaan.coordinates);
 
-
         // Test:2 sample test case
         char[] commands = { 'f', 'r', 'u', 'b', 'l' };
 
@@ -20,5 +19,13 @@ public class Chandryaan3test {
         assertEquals("N", chandryaan.dir);
         assertArrayEquals(new int[] { 0, 1, -1 }, chandryaan.coordinates);
 
+        // Test:2 sample test case
+        char[] commands1 = { 'f', 'b' , 'b'};
+
+        chandryaan.handleMove(commands1);
+
+        //result of test 2
+        assertEquals("N", chandryaan.dir);
+        assertArrayEquals(new int[] { 0, -1, 0 }, chandryaan.coordinates);
     }
 }
